@@ -1,30 +1,43 @@
 ---
-title: "Latex Example"
+title: "Correlation study of the physical development in infants"
 author: "Lakshmi Arbatti"
 date: "Saturday, January 31, 2015"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
 ---
+### Introduction  
 
-If we have a series of n measurements of X and Y written as xi and yi where i = 1, 2, ..., n, then the sample correlation coefficient can be used to estimate the population Pearson correlation r between X and Y. The sample correlation coefficient is written
+In this example we study the physical development of an infant by measuring the age and weight of the infant and apply correlation coefficient to determine how the two variables are correlated.
+
+### Correlation Study  
+
+Correlation study is the study of determining if two variables are related, i.e whether an increase or decrease in one variable has a similar effect on the other variable. The value of the coefficient lies between +1 and -1 inclusive, where 1 is total positive correlation and -1 is total negative correlation. While R provides a simple function "__cor__ " which we will be using in this example, it is important that we understand the calculations are performed in the background, to arrive at the result.
+
+### Pearson's Correlation Coefficient  
+
+Pearson's correlation coefficient defined as the covariance of the two variables divided by the product of their standard deviations. For a population, the Person's coefficient represented by the Greek letter $\rho$ (rho) carries the formula :
 
 $$
-\rho_{X,Y}=\mathrm{corr}(X,Y)={\mathrm{cov}(X,Y) \over \sigma_X \sigma_Y} ={E[(X-\mu_X)(Y-\mu_Y)] \over \sigma_X\sigma_Y}
+\rho_{X,Y}={\mathrm{cov}(X,Y) \over \sigma_X \sigma_Y} ={E[(X-\mu_X)(Y-\mu_Y)] \over \sigma_X\sigma_Y}
 $$
 
-where x and y are the sample means of X and Y, and sx and sy are the sample standard deviations of X and Y.
+where, $\mathrm{cov}$  is the covariance, $\sigma_X$  is the standard deviation of X , $\mu_X$  is the mean of X , and E  is the expectation.
 
 (Source: Wikipedia)
 
-In this example, we will calculate the correlation between age of a child and its weight.
-```{r,calc_correlation,echo = FALSE}
 
+In this example, we will calculate the correlation between age of a child and its weight.
+```{r calc_correlation}
 age <- c(1,3,5,2,11,9,3,9,12,3)
 weight <- c(4.4,5.3,7.2,5.2,8.5,7.3,6.0,10.4,10.2,6.1)
 aframe <- data.frame(age,weight)
 aframe
-
 ```
 
-Given the age and weight in the above table, the correlation is: `r cor(age,weight)`
+Given the age and weight in the above table, the correlation is "cor(age,weight)" : `r cor(age,weight)`
+
+```{r plot_graph}
+plot(age,weight)
+```
