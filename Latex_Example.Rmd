@@ -38,6 +38,8 @@ aframe
 
 Given the age and weight in the above table, the correlation is "cor(age,weight)" : `r cor(age,weight)`
 
+### Visualizing the coorelation  
+
 ```{r plot_graph}
 plot(age,weight)
 ```
