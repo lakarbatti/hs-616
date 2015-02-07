@@ -1,0 +1,53 @@
+---
+output: pdf_document
+---
+HS - 616 Questions week-wise
+================================================================
+author: Lakshmi Arbatti
+
+date: 01/31/2015
+
+
+
+### Lecture 1a  
+
+
+If x <- 1:4 and y <- 5:8 what is the output of x + y ?
+
+* A vector with values 6 8 10 12
+* A numeric integer with value 6
+* A numeric integer with values 6 8 10 12
+* Running the statement gives an error
+
+
+### Lecture 1b  
+
+What is the class() of the vector 'var' in the statement var <- runif (10) < 0.5?
+
+* Logical
+* Integer
+* Character
+* List
+
+
+### Lecture 2a  
+
+Which of the following equation represents the sensitivity of a test?
+
+* sensitivity = number of true positives / number with disease
+* sensitivity = number of true negatives / number without disease
+* sensitivity = number with disease / total population
+* sensitivity = number of true positives / number of true negatives
+
+
+### Lecture 2b  
+
+Poisson Probability Distribution is a type of 
+
+* Discrete Probability Distribution
+* Continuous Probability Distribution
+* Cumulative distibution
+* Random number generation
+
+
+
