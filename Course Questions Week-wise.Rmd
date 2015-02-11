@@ -49,5 +49,21 @@ Poisson Probability Distribution is a type of
 * Cumulative distibution
 * Random number generation
 
+### Lecture 3a  
+
+Given a matrix
+
+```{r matrix_operations, echo=FALSE}
+
+x <- matrix (1:12,4,3)
+x
+```
+
+what is the output of the statement __x[1,]__
+
+* [1] 1 5 9
+* [1] 1
+* [1] 1 2 3 4
+* System generates a syntax error
 
 
