@@ -59,11 +59,36 @@ x <- matrix (1:12,4,3)
 x
 ```
 
-what is the output of the statement __x[1,]__
+what is the output of the statement __x[1, ]__
 
 * [1] 1 5 9
 * [1] 1
 * [1] 1 2 3 4
 * System generates a syntax error
 
+### Lecture 3b   
 
+Given a matrix A 
+
+
+```{r matrix1, echo=FALSE}
+x <- matrix (1:12,4,3)
+x
+```
+
+what is the output of A * Transpose(A)
+
+*
+```{r matrix_operation, echo=FALSE}
+x <- matrix (1:12,4,3)
+trans <- t(x)
+x %*% trans
+```
+
+*
+```{r matrix2, echo=FALSE}
+diag(nrow=4)
+```
+
+* [1] 1 2 3 4
+* System generates a syntax error
