@@ -92,3 +92,28 @@ diag(nrow=4)
 
 * [1] 1 2 3 4
 * System generates a syntax error
+
+
+### Lecture 4a  
+
+To find the square of each number from 1 to N, which of the following is the fastest approach
+
+
+*
+x <- 1:N
+y <- x^2
+  
+*
+y <- numeric()
+for (i in 1:N) y[i] <- i^2
+
+*
+y <- numeric(N)
+for (i in 1:N) y[i] <- i^2
+
+
+### Lecture 4b  
+
+
+
+
