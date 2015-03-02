@@ -1,5 +1,7 @@
 ---
-output: pdf_document
+output:
+  pdf_document:
+    keep_tex: yes
 ---
 HS - 616 Questions week-wise
 ================================================================
@@ -48,8 +50,7 @@ Poisson Probability Distribution is a type of
 ## Lecture 3a  
 
 Given a matrix
-```{r matrix_operations, echo=FALSE}
-
+```
 x <- matrix (1:12,4,3)
 x
 ```
@@ -63,21 +64,21 @@ what is the output of the statement __x[1, ]__
 ### Lecture 3b   
 
 Given a matrix A
-```{r matrix1, echo=FALSE}
+```
 x <- matrix (1:12,4,3)
 x
 ```
 what is the output of A * Transpose(A)
 
 *
-```{r matrix_operation, echo=FALSE}
+```
 x <- matrix (1:12,4,3)
 trans <- t(x)
 x %*% trans
 ```
 
 *
-```{r matrix2, echo=FALSE}
+```
 diag(nrow=4)
 ```
 
@@ -91,11 +92,9 @@ To find the square of each number from 1 to N, which of the following is the fas
 *
 x <- 1:N
 y <- x^2
-  
 *
 y <- numeric()
 for (i in 1:N) y[i] <- i^2
-
 *
 y <- numeric(N)
 for (i in 1:N) y[i] <- i^2
