@@ -126,6 +126,21 @@ What does the selectorGadget do?
 * Selects the best function in a given program
 * Helps to select and time profiler functions
 
+### Lecture 6a
 
+Which statement below best describes "natural join"?
 
+* "natural join"" uses an obviously similar column for join.
+* "natural join" keeps only records in first table
+* "natural join" keeps only the information from second table if available
+* SQL does not support natural join
+
+### Lecture 6b
+
+In database management, what is meant by "Data Aggregation"?
+
+* The process by which data is gathered and summarized for further statistical analyses
+* Using an inner join to extract data from a table
+* Normalizing the data in a database table
+* Finding the mean of columns in a database table
 
