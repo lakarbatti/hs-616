@@ -1,8 +1,3 @@
----
-output:
-  pdf_document:
-    keep_tex: yes
----
 HS - 616 Questions week-wise
 ================================================================
 author: Lakshmi Arbatti
@@ -50,9 +45,13 @@ Poisson Probability Distribution is a type of
 ## Lecture 3a  
 
 Given a matrix
+
 ```
-x <- matrix (1:12,4,3)
-x
+##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12
 ```
 what is the output of the statement __x[1, ]__
 
@@ -61,45 +60,59 @@ what is the output of the statement __x[1, ]__
 * [1] 1 2 3 4
 * System generates a syntax error
 
-### Lecture 3b   
+## Lecture 3b   
 
 Given a matrix A
+
 ```
-x <- matrix (1:12,4,3)
-x
+##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12
 ```
 what is the output of A * Transpose(A)
 
 *
+
 ```
-x <- matrix (1:12,4,3)
-trans <- t(x)
-x %*% trans
+##      [,1] [,2] [,3] [,4]
+## [1,]  107  122  137  152
+## [2,]  122  140  158  176
+## [3,]  137  158  179  200
+## [4,]  152  176  200  224
 ```
 
 *
+
 ```
-diag(nrow=4)
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1
 ```
 
 * [1] 1 2 3 4
 * System generates a syntax error
 
-### Lecture 4a  
+## Lecture 4a  
 
 To find the square of each number from 1 to N, which of the following is the fastest approach
 
 *
 x <- 1:N
 y <- x^2
+  
 *
 y <- numeric()
 for (i in 1:N) y[i] <- i^2
+
 *
 y <- numeric(N)
 for (i in 1:N) y[i] <- i^2
 
-### Lecture 4b  
+## Lecture 4b  
 
 Which of the following function keeps track of the function stack and tabulates how much time is spent on each function?
 
@@ -108,7 +121,7 @@ Which of the following function keeps track of the function stack and tabulates 
 * system.time()
 * rnorm()
 
-### Lecture 5a  
+## Lecture 5a  
 
 Which function in R is best suited to read very large data sets?
 
@@ -117,7 +130,7 @@ Which function in R is best suited to read very large data sets?
 * data.frame()
 * None of the choices
 
-### Lecture 5b  
+## Lecture 5b  
 
 What does the selectorGadget do?
 
@@ -126,7 +139,7 @@ What does the selectorGadget do?
 * Selects the best function in a given program
 * Helps to select and time profiler functions
 
-### Lecture 6a
+## Lecture 6a
 
 Which statement below best describes "natural join"?
 
@@ -135,7 +148,7 @@ Which statement below best describes "natural join"?
 * "natural join" keeps only the information from second table if available
 * SQL does not support natural join
 
-### Lecture 6b
+## Lecture 6b
 
 In database management, what is meant by "Data Aggregation"?
 
@@ -143,4 +156,26 @@ In database management, what is meant by "Data Aggregation"?
 * Using an inner join to extract data from a table
 * Normalizing the data in a database table
 * Finding the mean of columns in a database table
+
+## Lecture 7a 
+
+Which of the following in true with respect to relational database normalization?
+
+* Normalization involves removing redundancies aross tables and defining keys
+* Data in tables have a mean of zero and unit standard deviation
+* Making sure the data is normal as in human readable
+* Converting binary data to text data
+
+## Lecture 7b
+
+Which of the following is a common problem with messy datasets?
+
+* One entity is stored in multiple tables
+* Data is in the third norm form
+* Primary and foreign keys are well defined
+* Data is in human readable format
+
+
+
+
 
