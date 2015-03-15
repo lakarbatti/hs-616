@@ -19,10 +19,10 @@ If x <- 1:4 and y <- 5:8 what is the output of x + y ?
 
 What is the class() of the vector 'var' in the statement var <- runif (10) < 0.5?
 
-* Logical
-* Integer
-* Character
-* List
+* Logical  
+* Integer 
+* Character 
+* List 
 
 ## Lecture 2a  
 
@@ -37,8 +37,8 @@ Which of the following equation represents the sensitivity of a test?
 
 Poisson Probability Distribution is a type of 
 
-* Discrete Probability Distribution
-* Continuous Probability Distribution
+* Discrete Probability Distribution  
+* Continuour Probability Distribution
 * Cumulative distibution
 * Random number generation
 
@@ -143,7 +143,7 @@ What does the selectorGadget do?
 
 Which statement below best describes "natural join"?
 
-* "natural join"" uses an obviously similar column for join.
+* "natural join" uses an obviously similar column for join.
 * "natural join" keeps only records in first table
 * "natural join" keeps only the information from second table if available
 * SQL does not support natural join
