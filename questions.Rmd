@@ -1,0 +1,27 @@
+---
+title: "Questions for final exam"
+author: "Lakshmi Arbatti"
+date: "Sunday, March 29, 2015"
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+---
+
+## Lecture 8a
+
+What does the ggplot function __geom_point__ function do?
+
+* The function is used to create scatterplots.
+* This function is helpful to get the geometric points in a dataset.
+* This function can be used to create a histogram.
+* This function does not exist at all.
+
+## Lecture 8b
+
+In statistics, what is the meaning of __multicollinearity__?
+
+* Its a phenomenon in which two or more predictor variables in a regression model are highly correlated.
+* Its a model in which many values linear.
+* There is no such thing as multicollinearity in statistics.
+* There is no relationship between multiple variables.
