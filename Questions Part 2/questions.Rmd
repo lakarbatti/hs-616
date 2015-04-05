@@ -1,0 +1,55 @@
+---
+title: "Questions for final exam"
+author: "Lakshmi Arbatti"
+date: "Sunday, March 29, 2015"
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+---
+
+## Lecture 8a
+
+What does the ggplot function __geom_point__ do?
+
+* The function is used to create scatterplots.
+* This function is helpful to get the geometric points in a dataset.
+* This function can be used to create a histogram.
+* This function does not exist at all.
+
+## Lecture 8b
+
+In statistics, what is the meaning of __multicollinearity__?
+
+* Its a phenomenon in which two or more predictor variables in a regression model are highly correlated.
+* Its a model in which many values are linear.
+* There is no such thing as multicollinearity in statistics.
+* It is a model in which there is no relationship between multiple variables.
+
+## Lecture 9a
+
+Given the piece of code below:
+```r
+N <- 100
+df <- data.frame(
+  var1 = runif(N, min=0, max=10),
+  var2 = sample(letters[1:5], N, replace=T)
+)
+kable(head(df))
+```
+Which of the variables declared above are categorical?
+
+* var2 is the categorical variable
+* var1 is the categorical variable
+* The sample does not have any categorical variable
+
+## Lecture 9b
+
+What does __floor(2.9)__ return?
+
+* Returns the number 2
+* Throws an error since the function floor does not exist in R
+* Rounds the number 2.9 to 3
+* Returns the number 2.9
+
+
