@@ -52,4 +52,23 @@ What does __floor(2.9)__ return?
 * Rounds the number 2.9 to 3
 * Returns the number 2.9
 
+## Lecture 10a
+
+What does __readRDS()__ function do?
+
+* Reads a binary file into a dataframe
+* Reads a csv data set
+* There is no such function in R
+
+## Lecture 10b
+
+Which function returns the column names of a dataframe?
+
+* names()
+* getcols()
+* readRDS()
+* readdata()
+
+
+
 
