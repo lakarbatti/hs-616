@@ -69,6 +69,47 @@ Which function returns the column names of a dataframe?
 * readRDS()
 * readdata()
 
+## Lecture 11a
+
+What is __Centrality__ in the igraph package?
+
+* Degree of the graph 
+* The central point in a graph
+* A point in the graph
+* There is no such term in igraphics package
+
+## Lecture 11b
+
+What is __Vertex and edge betweenness()__  in the igraph package?
+
+* The number of geodesics (shortest paths) going through a vertex or an edge
+* The distance between two points in a graph
+* Does not really mean anything
+
+## Lecture 12a
+
+What is the equation for a line?
+
+* y = mx + b, where y is the y intercept, m is the slope and b is the constant
+* y = mx + b, where y is the name of the line, m is the mean
+* a + b + c = 0
+* None of the choices
+
+## Lecture 12b
+
+Which plotting function adds one or more straight lines through a current plot?
+
+* abline()
+* addline()
+* moreline()
+* None of the choices
+
+## Lecture 13a
+
+
+
+
+
 
 
 
