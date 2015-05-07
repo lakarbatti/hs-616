@@ -146,6 +146,17 @@ Which function can be used to fit __Generalized Linear Models__
 
 ## Lecture 15a
 
+In statistics, what is __homoscedasticity__?
+
+* A sequence or vector is __homoscedastic__ if the variables in the sequence or vector have finite variance
+* __homoscedasticity__ is the science of measuring the coefficients in a dataset
+* There is no such term as __homoscedasticity__ in statistics
+* A sequence is __homoscedastic__ if the variables in the sequence have no or unequal variance
+
+## Lecture 15b
+
+
+
 
 
 
