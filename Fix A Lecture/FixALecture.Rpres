@@ -229,16 +229,15 @@ Trace
 ========================================================
 The **trace** of a matrix is the sum of the diagonal elements of a square matrix
 ```r
-A <- matrix(sample(1:16), nrow=4)
+A <- matrix(sample(1:9), nrow=3)
 A
 ```
 
 ```
-     [,1] [,2] [,3] [,4]
-[1,]    5    3   14   13
-[2,]    6   10    1    8
-[3,]    9   11    2    4
-[4,]   12   15    7   16
+     [,1] [,2] [,3]
+[1,]    3    5    7
+[2,]    4    9    1
+[3,]    8    6    2
 ```
 
 ```r
@@ -247,7 +246,7 @@ sum(diag(A))
 ```
 
 ```
-[1] 33
+[1] 14
 ```
 
 Determinant of a matrix
@@ -280,7 +279,7 @@ Inverse of a matrix
 ========================================================
 - Given two matrices A and B, if the dot product of A and B is an identity matrix, B is said to be the inverse of A and is represented by A^-1
 - A matrix that is its own inverse, i.e. A = A^-1 and A^2 = I, is called an involution.
-- Gauss-Jordan elimination is an algorithm that can be used to determine whether a given matrix is invertible and to find the inverse
+- Gauss-Jordan elimination is an algorithm that can be used to determine if a given matrix is invertible and to find the inverse
 
 
 Inverse of a matrix using in R
