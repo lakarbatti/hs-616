@@ -73,7 +73,7 @@ generateData <- function(N=5000){
   energyIntake <- proteinIntake *4 + fatIntake *9 + carbIntake * 4
   ############################################### 
   
-  df<- data.frame(age,speed,energyIntake,proteinIntake,fatIntake,carbIntake,gender,school,weight,height,bmi,socioEconomicStatus,
+  df<- data.frame(gender,school,socioEconomicStatus,age,speed,energyIntake,proteinIntake,fatIntake,carbIntake,weight,height,bmi,
              aerobicCap)
   
   df <- transform(df, score = 0.01 * (aerobicCap - mean(aerobicCap)) + 0.04 * (energyIntake - mean(energyIntake))+ 
@@ -101,6 +101,7 @@ coef(fit1)
 summary(fit1)
 ## To check out linear regression outcome on this data
 fit2 <- lm(scoreMath ~ I(aerobicCap - mean(aerobicCap)) + I(energyIntake - mean(energyIntake)) + I(bmi - mean(bmi)), data=df)
+par(mfrow=c(2,2))
 plot(fit2)
 
 
@@ -126,10 +127,15 @@ hist(predict(fit1, newdata=df2, type="link"), breaks=30)
 df11 <- df
 df11$prob <- NULL
 df11$score <- NULL
-colnames(df11) <- c("Age", "20 M Shuttle run Avg. speed", "Total Energy Intake/day", "Total Protein Intake/day", 
-                  "Total Fat Intake/day","Total Carb Intake/day", "Gender", "School Name", "Weight", "Height", "BMI", "Economic Status","Aerobic Capacity" ,"score","prob","Math Score","English Score")
+df11$mathCategory <- NULL
+df11$engCategory <- NULL
+colnames(df11) <- c("Gender", "School Name", "Economic Status","Age", "20 M Shuttle run Avg. speed", "Total Energy Intake/day", "Total Protein Intake/day", 
+                  "Total Fat Intake/day","Total Carb Intake/day", "Weight", "Height", "BMI", "Aerobic Capacity" ,"Math Score","English Score")
 
 write.csv(df11,file="C:\\Lakshmi\\MSHI\\GitHub\\hs-616\\Data Simulation Project\\data.csv")
+
+## Running PCA on this data
+pca <- princomp(df11[4:15])
 
 ## Helper function to calculate cooefficients
 logistic <- function(t) 1 / (1 + exp(-t))
