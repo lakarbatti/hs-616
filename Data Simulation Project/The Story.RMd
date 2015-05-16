@@ -20,11 +20,36 @@ Reference Links : http://www.ncbi.nlm.nih.gov/pubmed/25806824
                   
                   http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0122487
 
-## Overview:
+## Introduction:
 
  This assignment is based on the paper provided in the above links. The scenario has been altered slightly to suit the needs
- of this assignment, without altering the final analysis. For eg. Kannada has been replaced with English in the score calculation and specific features
- from a large set of features have been chosen to reduce the complexity of the data simulation and analysis.
+ of this assignment, without altering the final analysis. For e.g. Kannada has been replaced with English in the score calculation and specific features from a large set of features have been chosen to reduce the complexity of the data simulation and analysis.
+ The following features were considered:
+ 
+ \begin{table}[h]
+\begin{tabular}{|l|l|}
+\hline
+Features &  Description\\ \hline
+ age &  Age of the child in years\\ \hline
+ speed &  Average speed in a 20m shuttle test in meters/minute \\ \hline
+ energyIntake &  Total Energy intake/day KCal\\ \hline
+ proteinIntake & Total protein intake/day grams \\ \hline
+ fatIntake &  Total fat intake/day grams\\ \hline
+ carbIntake &  Total carb intake/day grams \\ \hline
+ gender & M or F \\ \hline
+ school & Name of school \\ \hline
+ weight & Weight of the child in kilograms \\ \hline
+ height & Height of the child in centimeters\\ \hline
+ bmi &  BMI\\ \hline
+ EconomicStatus & Economic status of the child's family \\ \hline
+ aerobicCap & Aerobic Capacity based on the 20M shuttle test \\ \hline
+ scoreMath & Score in Math \\ \hline
+ scoreEnglish  & Score in English \\ \hline
+\end{tabular}
+\end{table}
+
+ 
+ ## Overview:
  
  Aerobic fitness has been shown to have several beneficial effects on child health. However, research on its 
  relationship with academic performance has been limited, particularly in developing countries and among 
@@ -32,30 +57,11 @@ Reference Links : http://www.ncbi.nlm.nih.gov/pubmed/25806824
  in clinically healthy but nutritionally compromised Indian school-aged children and assessed whether 
  micronutrient status affects this association. 273 participants, aged 7 to 10.5 years, were enrolled from 
  three primary schools in Bangalore, India. Data on participants' aerobic fitness (20-m shuttle test), 
- demographics, diet, BMI and micronutrient status were abstracted. School-wide 
- exam scores in mathematics and English language were collected and served as indicators of academic performance and were 
+ demographics, BMI and micronutrient status were abstracted. School-wide 
+ exam scores in Mathematics and English language were collected and served as indicators of academic performance and were 
  standardized by grade level. Significant positive correlations between aerobic capacity (VO2 peak)
- and academic scores in math and English were observed.  After standardizing scores across grade levels and adjusting for 
- school, gender, socioeconomic status, and weight status (BMI), children with greater aerobic capacities demonstrated that they had greater odds of scoring above average on math and  English exams. This association remained significant after adjusting for micronutrient deficiencies. These findings 
- provide preliminary evidence of a fitness to academic achievement association in Indian children. While the mechanisms by which aerobic fitness may be linked to academic achievement require further investigation, the results suggest that educators and policymakers should consider that children are given adequate opportunities for physical activity and fitness in schools for both their physical and potential academic benefits. 
- 
- The following features were considered:
- 
-* age  	        Age of the child in years
-* speed		      Average speed in a 20m shuttle test in meters/minute
-* energyIntake	Total Energy intake/day KCal
-* proteinIntake	Total protein intake/day grams
-* fatIntake	    Total fat intake/day grams
-* carbIntake	  Total carb intake/day grams
-* gender		    M or F
-* school		    Name of school
-* weight		    Weight of the child in kilograms
-* height		    Height of the child in centimeters
-* bmi		        BMI
-* EconomicStatus	Economic status of the child's family
-* aerobicCap	  Aerobic Capacity based on the 20M shuttle test
-* scoreMath	    Score in Math
-* scoreEnglish	Score in English
+ and academic scores in Math and English were observed. After standardizing scores across grade levels and adjusting for 
+ school, gender, socioeconomic status, and weight status (BMI), children with greater aerobic capacities demonstrated that they had greater odds of scoring above average on Math and English exams. This association remained significant after adjusting for micronutrient deficiencies. These findings provide preliminary evidence of a fitness to academic achievement association in Indian children. While the mechanisms by which aerobic fitness may be linked to academic achievement require further investigation, the results suggest that educators and policymakers should consider that children be given adequate opportunities for physical activity and fitness in schools for both their physical and potential academic benefits.
 
 While this is a classification problem (did the child do good academically or not), the class itself is disguised in quantitative variables Math score and English score to throw in a little challenge to the data analyst.
 
@@ -96,24 +102,24 @@ In order to analyze the data, given that the data gives no indication of classif
 fit2 <- lm(scoreMath ~ I(aerobicCap - mean(aerobicCap)) + I(energyIntake - mean(energyIntake)) 
 + I(bmi - mean(bmi)), data=df)
 ```
-The residual vs fitted graph would give the analyst a clear indication of a non-linear relationship
+The residual vs fitted graph would give the analyst a clear indication of a non-linear relationship.
 
 ![](resi.png)
 
 
 
-The Q-Q plot would also indicate that a linear fit is not possible
+The Q-Q plot would also indicate that a linear fit is not possible.
 
 ![](qq.png)
 
-Executing the following piece of code yields a clear demarcation between high and low scores
+Executing the following piece of code yields a clear demarcation between high and low scores.
 
 ```r
 plot(df$mathCategory, predict(fit1, type="response"), notch=T)
 ```
 ![](box.png)
 
-Now, plotting the ROC give the following results when this model is considered as a classification problem
+Now, plotting the ROC give the following results when this model is considered as a classification problem.
 
 ```r
 df2 <- generateData(10000)

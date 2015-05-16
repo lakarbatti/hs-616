@@ -14,7 +14,7 @@
 # The story:
 # Abstract
 # This assignment is based on the paper provided in the above links. The scenario has been altered slightly to suit the needs
-# of this assignment, without altering the final analysis. For eg. Kannada has been replaced with English in the score calculation
+# of this assignment, without altering the final analysis. For e.g. Kannada has been replaced with English in the score calculation
 # 
 # Aerobic fitness has been shown to have several beneficial effects on child health. However, research on its 
 # relationship with academic performance has been limited, particularly in developing countries and among 
@@ -23,16 +23,16 @@
 # micronutrient status affects this association. 273 participants, aged 7 to 10.5 years, were enrolled from 
 # three primary schools in Bangalore, India. Data on participants' aerobic fitness (20-m shuttle test), 
 # demographics, diet, BMI and micronutrient status were abstracted. School-wide 
-# exam scores in mathematics and English language were collected and served as indicators of academic performance and were 
+# exam scores in Mathematics and English language were collected and served as indicators of academic performance and were 
 # standardized by grade level. Significant positive correlations between aerobic capacity (VO2 peak)
-# and academic scores in math and English were observed (P < 0.05). 
+# and academic scores in Math and English were observed (P < 0.05). 
 # After standardizing scores across grade levels and adjusting for school, gender, 
 # socioeconomic status, and weight status (BMI), children with greater aerobic 
-# capacities demonstrated that they had greater odds of scoring above average on math and 
+# capacities demonstrated that they had greater odds of scoring above average on Math and 
 # English exams. This association remained significant after adjusting for micronutrient deficiencies. These findings 
 # provide preliminary evidence of a fitness to academic achievement association in Indian children. While the mechanisms by which 
 # aerobic fitness may be linked to academic achievement require further investigation, the results suggest that educators and 
-# policymakers should consider that children are given adequate opportunities for physical activity and fitness in schools for 
+# policymakers should consider that children be given adequate opportunities for physical activity and fitness in schools for 
 # both their physical and potential academic benefits. 
 #
 
