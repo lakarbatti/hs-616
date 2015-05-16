@@ -160,7 +160,7 @@ Based on the video by Andrew Ng on learning curves, which of the following is a 
 * If a learning algorithm is suffering from high bias, getting more data will not (by itself) help much in getting a lower cross validation or test set error
 * High bias algorithms can easily be resolved with small data samples
 * High bias algorithms are biased to sensitivity
-* High bias algorithms are biased to specificity
+* All of the statements are true
 
 
 
