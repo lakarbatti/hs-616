@@ -13,122 +13,133 @@
 #
 # The story:
 # Abstract
+# This assignment is based on the paper provided in the above links. The scenario has been altered slightly to suit the needs
+# of this assignment, without altering the final analysis. For eg. Kannada has been replaced with English in the score calculation
 # 
 # Aerobic fitness has been shown to have several beneficial effects on child health. However, research on its 
 # relationship with academic performance has been limited, particularly in developing countries and among 
-# undernourished populations. This study examined the association between aerobic fitness and academic achievement 
+# undernourished populations. This study in question examined the association between aerobic fitness and academic achievement 
 # in clinically healthy but nutritionally compromised Indian school-aged children and assessed whether 
 # micronutrient status affects this association. 273 participants, aged 7 to 10.5 years, were enrolled from 
 # three primary schools in Bangalore, India. Data on participants' aerobic fitness (20-m shuttle test), 
-# demographics, anthropometry, diet, physical activity, and micronutrient status were abstracted. School-wide 
-# exam scores in mathematics and Kannada language served as indicators of academic performance and were 
-# standardized by grade level. The strength of the fitness/achievement association was analyzed using 
-# Spearman's rank correlation, multiple variable logistic regression, and multi-level models. Significant 
-# positive correlations between aerobic capacity (VO2 peak) and academic scores in math and Kannada were 
-# observed (P < 0.05). After standardizing scores across grade levels and adjusting for school, gender, 
-# socioeconomic status, and weight status (BMI Z-score), children with greater aerobic 
-# capacities (mL * kg-1 * min-1) had greater odds of scoring above average on math and 
-# Kannada exams (OR=1.08, 95% CI: 1.02 to 1.15 and OR=1.11, 95% CI: 1.04 to 1.18, respectively). This association 
-# remained significant after adjusting for micronutrient deficiencies. These findings provide preliminary evidence
-# of a fitness/achievement association in Indian children. While the mechanisms by which aerobic fitness may be 
-# linked to academic achievement require further investigation, the results suggest that educators and 
-# policymakers should consider the adequacy of opportunities for physical activity and fitness in schools for 
+# demographics, diet, BMI and micronutrient status were abstracted. School-wide 
+# exam scores in mathematics and English language were collected and served as indicators of academic performance and were 
+# standardized by grade level. Significant positive correlations between aerobic capacity (VO2 peak)
+# and academic scores in math and English were observed (P < 0.05). 
+# After standardizing scores across grade levels and adjusting for school, gender, 
+# socioeconomic status, and weight status (BMI), children with greater aerobic 
+# capacities demonstrated that they had greater odds of scoring above average on math and 
+# English exams. This association remained significant after adjusting for micronutrient deficiencies. These findings 
+# provide preliminary evidence of a fitness to academic achievement association in Indian children. While the mechanisms by which 
+# aerobic fitness may be linked to academic achievement require further investigation, the results suggest that educators and 
+# policymakers should consider that children are given adequate opportunities for physical activity and fitness in schools for 
 # both their physical and potential academic benefits. 
 #
-# 
-# Step 1 select the topic
-# Step 2 read more information on the topic
-# Step 3 Collect Mean and SD weight and height for population
-
-aerobicCapVO2Max <- function (maxSpeed, age){
-  return(31.025 + 3.238 * maxSpeed - 3.248 * age + 0.1536 * (maxSpeed * age))
-}
-
-
-# calcMath <- function(aerobic,energy,protein,fat,carb){
-#   
-#   meanAero <- mean(aerobic)
-#   meanEnergy <- mean(energy)
-#   meanProt <- mean(protein)
-#   meanFat <- mean(fat)
-#   meanCarb <- mean(carb)
-#     
-#   ifelse ((aerobic > meanAero) & (energy > meanEnergy) & (protein > meanProt) & (fat > mean(fat))
-#                           & (carb > meanCarb),runif(N,88,100),runif(N,35,55))  
-#   
-# }
-# 
-# calcKannada <- function(aerobic,energy,protein,fat,carb){
-#   meanAero <- mean(aerobic)
-#   meanEnergy <- mean(energy)
-#   meanProt <- mean(protein)
-#   meanFat <- mean(fat)
-#   meanCarb <- mean(carb)
-#   
-#   ifelse ((aerobic > meanAero) & (energy > meanEnergy) & (protein > meanProt) & (fat > mean(fat))
-#           & (carb > meanCarb),runif(N,85,95),runif(N,25,50))
-# }
-
 
 generateData <- function(N=5000){
+  
+  # The formulae for this function is taken from NCBI website  
+  aerobicCapVO2Max <- function (maxSpeed, age){
+    return(31.025 + 3.238 * maxSpeed - 3.248 * age + 0.1536 * (maxSpeed * age))
+  }
+  
+  logistic <- function(t) 1 / (1 + exp(-t))
+  
+  BMI <- function(height, weight) weight/height^2
 
   ######### Statistical Data #####################
   heightMean <- c(F = 131.3, M = 130.85)
   heightSD <- c(F = 7.8, M = 6.7)
   weightMean <- c(F = 27.75, M = 27.98)
   weightSD <- c(F = 4.5, M = 3.5)
-  gender <- sample(c("M", "F"), N, replace=TRUE, prob = c(0.498,0.502))
-  school <- sample(c("School1", "school2", "School3"), N, replace=TRUE)
   weight <- rnorm(N,mean = weightMean, sd= weightSD)
   height <- rnorm(N,mean = heightMean, sd= heightSD)
-  BMI <- function(height, weight) weight/height^2
-  socioEconomicStatus <- sample(c("Low", "Medium", "High"), N, replace=TRUE)
-  
-  age <- runif(N,7,10.5)
-  speed <- rnorm(N,mean=9,sd=2)
-  
-  #maxSpeed <- runif(1,10,20)
-  aerobicCap <- aerobicCapVO2Max(speed,age)
-  #grade <- sapply(age,gradeStud)
-  
-  #grade <- cut(age,breaks = 7:11,labels = paste("Grade",2:5),right =FALSE)
-  grade <- cut(age,breaks = 7:11,labels = 2:5,right =FALSE)
-  
-
   bmi <- BMI(height,weight)
+  age <- runif(N,7,10.5)
+  speed <- rnorm(N,mean=9,sd=2)  
+  grade <- cut(age,breaks = 7:11,labels = 2:5,right =FALSE)
+  aerobicCap <- aerobicCapVO2Max(speed,age) 
+
+  gender <- sample(c("M", "F"), N, replace=TRUE, prob = c(0.498,0.502))
+  school <- sample(c("School1", "School2", "School3"), N, replace=TRUE)
+  socioEconomicStatus <- sample(c("Low", "Medium", "High"), N, replace=TRUE)
+
   ########### Micronutrients data ###############
   proteinIntake <- runif(N,21.1,32.7)
   fatIntake <- runif(N,14.7,27.9)
   carbIntake <- runif(N,135,204)
   
+  # Converting to calories
   energyIntake <- proteinIntake *4 + fatIntake *9 + carbIntake * 4
   ############################################### 
   
-  #scoreMath <- calcMath(N,aerobicCap,energyIntake,proteinIntake,fatIntake,carbIntake)
-  #scoreKannada <- calcKannada(N,aerobicCap,energyIntake,proteinIntake,fatIntake,carbIntake)
-
-  data.frame(age,speed,energyIntake,proteinIntake,fatIntake,carbIntake,gender,school,weight,height,bmi,socioEconomicStatus,
+  df<- data.frame(age,speed,energyIntake,proteinIntake,fatIntake,carbIntake,gender,school,weight,height,bmi,socioEconomicStatus,
              aerobicCap)
-}
-
-library(manipulate)
-manipulate({
-  df <- transform(df, score = 10^a * (aerobicCap - mean(aerobicCap)) + 10^b * (energyIntake - mean(energyIntake)) + 
-                  10^c * (bmi - mean(bmi)))
+  
+  df <- transform(df, score = 0.01 * (aerobicCap - mean(aerobicCap)) + 0.04 * (energyIntake - mean(energyIntake))+ 
+                    66 * (bmi - mean(bmi)) - 2.1)
   df$prob <- logistic(df$score)
   hist(df$prob, breaks=50)
+  
+  # The outcome is then masked into a range of outcome for high and low scores for two subjects
+  df$scoreMath <- round(ifelse(df$prob > runif(N), rnorm(N,mean = 94, sd= 4),rnorm(N,mean = 45, sd= 3)),2)
+  df$scoreEnglish <- round(ifelse(df$prob > runif(N), rnorm(N,mean = 85, sd= 4),rnorm(N,mean = 40, sd= 3)),2)
+  df$mathCategory <- factor(ifelse (df$scoreMath > 70, "High", "Low"),levels=c("Low", "High"))
+  df$engCategory <- factor(ifelse (df$scoreEnglish > 65, "High", "Low"),levels=c("Low", "High"))
+  return(df)
+  
+}
+set.seed(0)
+N <- 10000
+df <- generateData(10000)
+
+#View(df1)
+
+
+fit1 <- glm(mathCategory ~ I(aerobicCap - mean(aerobicCap)) + I(energyIntake - mean(energyIntake)) + I(bmi - mean(bmi)), data=df, family="binomial")
+coef(fit1)
+summary(fit1)
+## To check out linear regression outcome on this data
+fit2 <- lm(scoreMath ~ I(aerobicCap - mean(aerobicCap)) + I(energyIntake - mean(energyIntake)) + I(bmi - mean(bmi)), data=df)
+plot(fit2)
+
+
+
+
+## To plot AUC-ROC
+plot(df$mathCategory, predict(fit1, type="response"), notch=T)
+
+## Create a new data set to use as test set
+df2 <- generateData(10000)
+actual <- df2$mathCategory=="High"
+predicted <- predict(fit1, newdata=df2, type="link")
+head(predicted)
+head(actual)
+
+library(pROC)
+plot.roc(actual,predicted)
+hist(predict(fit1, newdata=df2, type="response"), breaks=30)
+hist(predict(fit1, newdata=df2, type="link"), breaks=30)
+
+
+## Save the data into a csv file. Be sure to delete the "additional parameters"
+df11 <- df
+df11$prob <- NULL
+df11$score <- NULL
+colnames(df11) <- c("Age", "20 M Shuttle run Avg. speed", "Total Energy Intake/day", "Total Protein Intake/day", 
+                  "Total Fat Intake/day","Total Carb Intake/day", "Gender", "School Name", "Weight", "Height", "BMI", "Economic Status","Aerobic Capacity" ,"score","prob","Math Score","English Score")
+
+write.csv(df11,file="C:\\Lakshmi\\MSHI\\GitHub\\hs-616\\Data Simulation Project\\data.csv")
+
+## Helper function to calculate cooefficients
+logistic <- function(t) 1 / (1 + exp(-t))
+library(manipulate)
+manipulate({
+  df1 <- transform(df, score = 10^a * (aerobicCap - mean(aerobicCap)) + 10^b * (energyIntake - mean(energyIntake)) + 
+                     10^c * (bmi - mean(bmi)) - 2.1)
+  df1$prob <- logistic(df$score)
+  hist(df1$prob, breaks=50)
 }, a=slider(-9, 9, step=0.1, initial = 0), b=slider(-9, 9, step=0.1, initial = 0), c=slider(-9, 9, step=0.1, initial = 0))
 
-df <- transform(df, score = 10^-1 * (aerobicCap - mean(aerobicCap)) + 10^(-1.6) * (energyIntake - mean(energyIntake))+ 
-                  10^2.7 * (bmi - mean(bmi)))
-df$prob <- logistic(df$score)
-hist(df$prob, breaks=50)
 
-# The dummy outcome is calculated to classify the data into high performers and low performers
-df$dummyOutcome <- factor(ifelse(df$prob > runif(N), 1, 0))
-
-# The outcome is then masked into a range of outcome for high and low scores for two subjects
-df$scoreMath <- factor(ifelse(df$dummyOutcome == 1, runif(N,88,100),runif(N,35,55)))
-df$scoreEnglish <- factor(ifelse(df$dummyOutcome == 1, runif(N,85,95),runif(N,25,50)))
-head(df)
 
