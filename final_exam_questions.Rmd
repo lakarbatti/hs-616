@@ -90,7 +90,7 @@ What is __Vertex and edge betweenness()__  in the igraph package?
 
 What is the equation for a line?
 
-* y = mx + b, where y is the y intercept, m is the slope and b is the constant
+* y = mx + b, where b is the y intercept, m is the slope
 * y = mx + b, where y is the name of the line, m is the mean
 * a + b + c = 0
 * None of the choices
