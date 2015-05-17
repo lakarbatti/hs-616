@@ -39,8 +39,8 @@ knitr::kable(head(df))
 ```
 Which of the variables declared above are categorical?
 
-* var2 is the categorical variable
-* var1 is the categorical variable
+* `var2` is the categorical variable
+* `var1` is the categorical variable
 * The sample does not have any categorical variable
 
 ## Lecture 9b
@@ -64,10 +64,10 @@ What does __readRDS()__ function do?
 
 Which function returns the column names of a dataframe?
 
-* names()
-* getcols()
-* readRDS()
-* readdata()
+* `names()`
+* `getcols()`
+* `readRDS()`
+* `readdata()`
 
 ## Lecture 11a
 
@@ -99,9 +99,9 @@ What is the equation for a line?
 
 Which plotting function adds one or more straight lines through a current plot?
 
-* abline()
-* addline()
-* moreline()
+* `abline()`
+* `addline()`
+* `moreline()`
 * None of the choices
 
 ## Lecture 13a
@@ -140,9 +140,9 @@ What is the __manipulate__ function useful for?
 
 Which function can be used to fit __Generalized Linear Models__
 
-* The __glm()__ function
-* The __lm()__ function
-* The __gen()__ function
+* The `glm()` function
+* The `lm()` function
+* The `gen()` function
 
 ## Lecture 15a
 
