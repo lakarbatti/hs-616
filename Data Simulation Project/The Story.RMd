@@ -112,12 +112,21 @@ The Q-Q plot would also indicate that a linear fit is not possible.
 
 ![](qq.png)
 
-Executing the following piece of code yields a clear demarcation between high and low scores.
+Executing the following piece of code yields a clear demarcation between high and low scores for several features in the dataset
 
 ```r
-plot(df$mathCategory, predict(fit1, type="response"), notch=T)
+plot(df$mathCategory, predict(fit1, type="response"), notch=T, 
+  col = c("gold", "darkgreen"), main="Math Category Distribution")
+with(df,boxplot(scoreMath ~ mathCategory, notch = TRUE, 
+  col = c("gold", "darkgreen"), main = "Categorical Math scores"))
+
+with(df,boxplot(aerobicCap ~ mathCategory, notch = TRUE,
+  col = c("gold", "darkgreen"),main = "Categorical Aerobic capacity"))
+with(df,boxplot(bmi ~ mathCategory, notch = TRUE, 
+  col = c("gold", "darkgreen"), main = "Categorical BMI"))
+
 ```
-![](box.png)
+![](boxes.png)
 
 Now, plotting the ROC give the following results when this model is considered as a classification problem.
 
