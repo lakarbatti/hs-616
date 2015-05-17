@@ -35,7 +35,7 @@ df <- data.frame(
   var1 = runif(N, min=0, max=10),
   var2 = sample(letters[1:5], N, replace=T)
 )
-kable(head(df))
+knitr::kable(head(df))
 ```
 Which of the variables declared above are categorical?
 
@@ -56,7 +56,7 @@ What does __floor(2.9)__ return?
 
 What does __readRDS()__ function do?
 
-* Reads a binary file into a dataframe
+* Reads a binary R dataset into a dataframe and returns the loaded object
 * Reads a csv data set
 * There is no such function in R
 
@@ -73,7 +73,7 @@ Which function returns the column names of a dataframe?
 
 What is __Centrality__ in the igraph package?
 
-* Degree of the graph 
+* Degree of the graph
 * The central point in a graph
 * A point in the graph
 * There is no such term in igraphics package
