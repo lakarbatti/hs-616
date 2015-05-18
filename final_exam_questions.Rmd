@@ -56,7 +56,7 @@ What does __floor(2.9)__ return?
 
 What does __readRDS()__ function do?
 
-* Reads a binary R dataset into a dataframe and returns the loaded object
+* Restores a single R object (in binary format) and assigns the returned object to a variable for e.g, a list
 * Reads a csv data set
 * There is no such function in R
 
@@ -106,7 +106,7 @@ Which plotting function adds one or more straight lines through a current plot?
 
 ## Lecture 13a
 
-What does the generic __group_by__ function do?
+What does the dplyr's __group_by__ function do?
 
 * The function groups a table by one or more variables
 * The function is used in logistic regression to group similar labels
@@ -124,7 +124,7 @@ grade <- cut(age,breaks = 7:11,labels = 2:5,right =TRUE)
 
 * To convert numeric values in the vector age to factors and store the values in the vector grade
 * To cut and paste values from the vector age into vector grade
-* To cut values from the vector age and store them in the enviroment variables
+* To cut values from the vector age and store them in the environment variables
 * __cut__ throws an error
 
 ## Lecture 14a
@@ -148,7 +148,7 @@ Which function can be used to fit __Generalized Linear Models__
 
 In statistics, what is __homoscedasticity__?
 
-* A sequence or vector is __homoscedastic__ if the variables in the sequence or vector have finite variance
+* A sequence or vector is __homoscedastic__ if the variables in the sequence or vector have the same finite variance
 * __homoscedasticity__ is the science of measuring the coefficients in a dataset
 * There is no such term as __homoscedasticity__ in statistics
 * A sequence is __homoscedastic__ if the variables in the sequence have no or unequal variance
