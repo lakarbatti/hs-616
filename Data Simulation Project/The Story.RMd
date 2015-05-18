@@ -102,13 +102,13 @@ In order to analyze the data, given that the data gives no indication of classif
 fit2 <- lm(scoreMath ~ I(aerobicCap - mean(aerobicCap)) + I(energyIntake - mean(energyIntake)) 
 + I(bmi - mean(bmi)), data=df)
 ```
-The residual vs fitted graph would give the analyst a clear indication of a non-linear relationship.
+The residual vs fitted graph would give the analyst a clear indication of a two category outcome.
 
 ![](resi.png)
 
 
 
-The Q-Q plot would also indicate that a linear fit is not possible.
+The QQ plot clearly demonstrates that the residuals are not normally distributed. This shows that the assumptions of linear regression do not hold.
 
 ![](qq.png)
 
@@ -116,7 +116,7 @@ Executing the following piece of code yields a clear demarcation between high an
 
 ```r
 plot(df$mathCategory, predict(fit1, type="response"), notch=T, 
-  col = c("gold", "darkgreen"), main="Math Category Distribution")
+  col = c("gold", "darkgreen"), main="Predicted Category Distribution")
 with(df,boxplot(scoreMath ~ mathCategory, notch = TRUE, 
   col = c("gold", "darkgreen"), main = "Categorical Math scores"))
 
@@ -205,11 +205,11 @@ generateData <- function(N=5000){
 
 2. The function to create the data frame object with the simulated data
 ```r
-N <- 10000
+N <- 1e6
 df <- generateData(N)
 ```
 
-3. Cross validation using the glm() function to try and get back the cooefficients
+3. When analysis was performed using the glm() function to try and get back the cooefficients
 
 ```r
 fit1 <- glm(mathCategory ~ I(aerobicCap - mean(aerobicCap)) + I(energyIntake - 
@@ -228,22 +228,22 @@ glm(formula = mathCategory ~ I(aerobicCap - mean(aerobicCap)) +
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--3.2048  -0.3535  -0.0826   0.2891   3.5176  
+-3.6132  -0.3470  -0.0841   0.2840   4.4174  
 
 Coefficients:
-                                       Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                          -2.070e+00  5.245e-02 -39.455  < 2e-16 ***
-I(aerobicCap - mean(aerobicCap))      1.516e-02  3.653e-03   4.148 3.35e-05 ***
-I(energyIntake - mean(energyIntake))  3.985e-02  8.492e-04  46.924  < 2e-16 ***
-I(bmi - mean(bmi))                   -6.920e+01  1.132e+02  -0.611    0.541    
+                                       Estimate Std. Error  z value Pr(>|z|)    
+(Intercept)                          -2.103e+00  1.677e-03 -1254.17   <2e-16 ***
+I(aerobicCap - mean(aerobicCap))      9.993e-03  1.167e-04    85.64   <2e-16 ***
+I(energyIntake - mean(energyIntake))  4.005e-02  2.694e-05  1486.61   <2e-16 ***
+I(bmi - mean(bmi))                    6.245e+01  3.615e+00    17.27   <2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 12531.4  on 9999  degrees of freedom
-Residual deviance:  5481.2  on 9996  degrees of freedom
-AIC: 5489.2
+    Null deviance: 12484307  on 9999999  degrees of freedom
+Residual deviance:  5397618  on 9999996  degrees of freedom
+AIC: 5397626
 
 Number of Fisher Scoring iterations: 7
 

@@ -46,7 +46,7 @@ generateData <- function(N=5000){
   logistic <- function(t) 1 / (1 + exp(-t))
   
   BMI <- function(height, weight) weight/height^2
-
+  
   ######### Statistical Data #####################
   heightMean <- c(F = 131.3, M = 130.85)
   heightSD <- c(F = 7.8, M = 6.7)
@@ -59,11 +59,11 @@ generateData <- function(N=5000){
   speed <- rnorm(N,mean=9,sd=2)  
   grade <- cut(age,breaks = 7:11,labels = 2:5,right =FALSE)
   aerobicCap <- aerobicCapVO2Max(speed,age) 
-
+  
   gender <- sample(c("M", "F"), N, replace=TRUE, prob = c(0.498,0.502))
   school <- sample(c("School1", "School2", "School3"), N, replace=TRUE)
   socioEconomicStatus <- sample(c("Low", "Medium", "High"), N, replace=TRUE)
-
+  
   ########### Micronutrients data ###############
   proteinIntake <- runif(N,21.1,32.7)
   fatIntake <- runif(N,14.7,27.9)
@@ -74,7 +74,7 @@ generateData <- function(N=5000){
   ############################################### 
   
   df<- data.frame(gender,school,socioEconomicStatus,age,speed,energyIntake,proteinIntake,fatIntake,carbIntake,weight,height,bmi,
-             aerobicCap)
+                  aerobicCap)
   
   df <- transform(df, score = 0.01 * (aerobicCap - mean(aerobicCap)) + 0.04 * (energyIntake - mean(energyIntake))+ 
                     66 * (bmi - mean(bmi)) - 2.1)
@@ -90,8 +90,8 @@ generateData <- function(N=5000){
   
 }
 set.seed(0)
-N <- 10000
-df <- generateData(10000)
+N <- 10e6
+df <- generateData(N)
 
 #View(df1)
 
@@ -105,10 +105,15 @@ par(mfrow=c(2,2))
 plot(fit2)
 
 
+plot(df$mathCategory, predict(fit1, type="response"), notch=T, col = c("gold", "darkgreen"), main="Predicted Category Distribution")
+with(df,boxplot(scoreMath ~ mathCategory, notch = TRUE, col = c("gold", "darkgreen"), main = "Categorical Math scores"))
+with(df,boxplot(scoreEnglish ~ engCategory, notch = TRUE, col = c("gold", "darkgreen"), main = "Categorical Math scores"))
 
-
+with(df,boxplot(aerobicCap ~ mathCategory, notch = TRUE,col = c("gold", "darkgreen"),main = "Categorical Aerobic capacity"))
+with(df,boxplot(bmi ~ mathCategory, notch = TRUE, col = c("gold", "darkgreen"), main = "Categorical BMI"))
+     
 ## To plot AUC-ROC
-plot(df$mathCategory, predict(fit1, type="response"), notch=T)
+
 
 ## Create a new data set to use as test set
 df2 <- generateData(10000)
@@ -123,6 +128,7 @@ hist(predict(fit1, newdata=df2, type="response"), breaks=30)
 hist(predict(fit1, newdata=df2, type="link"), breaks=30)
 
 
+
 ## Save the data into a csv file. Be sure to delete the "additional parameters"
 df11 <- df
 df11$prob <- NULL
@@ -130,22 +136,24 @@ df11$score <- NULL
 df11$mathCategory <- NULL
 df11$engCategory <- NULL
 colnames(df11) <- c("Gender", "School Name", "Economic Status","Age", "20 M Shuttle run Avg. speed", "Total Energy Intake/day", "Total Protein Intake/day", 
-                  "Total Fat Intake/day","Total Carb Intake/day", "Weight", "Height", "BMI", "Aerobic Capacity" ,"Math Score","English Score")
+                   "Total Fat Intake/day","Total Carb Intake/day", "Weight", "Height", "BMI", "Aerobic Capacity" ,"Math Score","English Score")
 
 write.csv(df11,file="C:\\Lakshmi\\MSHI\\GitHub\\hs-616\\Data Simulation Project\\data.csv")
 
 ## Running PCA on this data
 pca <- princomp(df11[4:15])
+pca
+summary(pca)
+
 
 ## Helper function to calculate cooefficients
 logistic <- function(t) 1 / (1 + exp(-t))
 library(manipulate)
 manipulate({
-  df1 <- transform(df, score = 10^a * (aerobicCap - mean(aerobicCap)) + 10^b * (energyIntake - mean(energyIntake)) + 
-                     10^c * (bmi - mean(bmi)) - 2.1)
-  df1$prob <- logistic(df$score)
-  hist(df1$prob, breaks=50)
+ df1 <- transform(df, score = 10^a * (aerobicCap - mean(aerobicCap)) + 10^b * (energyIntake - mean(energyIntake)) + 
+                    10^c * (bmi - mean(bmi)) - 2.1)
+ df1$prob <- logistic(df$score)
+ hist(df1$prob, breaks=50)
 }, a=slider(-9, 9, step=0.1, initial = 0), b=slider(-9, 9, step=0.1, initial = 0), c=slider(-9, 9, step=0.1, initial = 0))
-
 
 
